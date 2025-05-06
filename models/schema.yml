@@ -6,7 +6,35 @@ sources:
     tables:
       - name: sales
         identifier: raw_gz_sales
+        description: date, order, product, revenue, quantity
+        tests:
+          - unique:
+             column_name: "(pdt_id || '-' || orders_id)"
+        columns: 
+          - name: date_date
+            description: date of purchase
+          - name: orders_id
+            description: reference of date
+            tests:
+              - not_null
+          - name: product_id
+            description: reference product
+          - name: revenue
+            description: chiffre d'affaires
+          - name: quantity
       - name: product
         identifier: raw_gz_product
+        description: product, purchase_price
+        columns:
+          - name: product_id
+          - name: purchase_price
       - name: ship
         identifier: raw_gz_ship
+        description: order, shipping_fee, log_cost, ship_cost
+        columns:
+          - name: orders_id
+            tests:
+              - not_null
+          - name: shipping_fee
+          - name: log_cost
+          - name: ship_cost
