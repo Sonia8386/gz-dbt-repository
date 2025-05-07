@@ -1,6 +1,10 @@
 SELECT
 orders_id,
 date_date,
+quantity,
+purchase_cost,
+margin,
+revenue,
 shipping_fee,
 ship_cost,
 logcost,
